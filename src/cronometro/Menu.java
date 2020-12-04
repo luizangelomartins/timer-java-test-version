@@ -33,6 +33,8 @@ public class Menu {
             try {
                 
                 System.out.println("");
+                System.out.println("MENU - GERAL");
+                System.out.println("");
                 System.out.println("0 - SAIR.");
                 System.out.println("1 - CRONOMETRAR.");
                 System.out.println("");
