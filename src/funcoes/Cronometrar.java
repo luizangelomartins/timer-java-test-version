@@ -157,7 +157,7 @@ public class Cronometrar {
 
                 try {      
                     
-                    System.out.println(tempo2 + ":" + tempo3 + tempo4 + ":" + tempo5 + tempo6);
+                    System.out.println("CRONOMETRO - [ " + tempo2 + "h:" + tempo3 + tempo4 + "m:" + tempo5 + tempo6 + "s ]");
                     tempo6++;
 
                     // "SEGUNDOS":
