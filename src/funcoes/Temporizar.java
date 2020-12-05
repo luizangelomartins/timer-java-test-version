@@ -18,7 +18,7 @@ import java.util.TimerTask;
 
 
 // MÉTODO PRINCIPAL DA CLASSE:
-public class Cronometrar {
+public class Temporizar {
     
     
     // DECLARAÇÃO DE VARIAVEIS E OBJETOS:
@@ -34,8 +34,8 @@ public class Cronometrar {
     int escolha_usuario = 0;
     
     
-    // FUNÇÃO PARA EXIBIÇÃO DO MENU DO CRONOMETRO:
-    public void menu_cronometro() {
+    // FUNÇÃO PARA EXIBIÇÃO DO MENU DO TEMPORIZADOR:
+    public void menu_temporizador() {
         
         repetir = 0;
         
@@ -44,7 +44,7 @@ public class Cronometrar {
             try {
                 
                 System.out.println("");
-                System.out.println("MENU - CRONOMETRO");
+                System.out.println("MENU - TEMPORIZADOR");
                 System.out.println("TEMPO LIMITE: 10 ( DEZ ) HORAS");
                 System.out.println("");
                 System.out.println("0 - VOLTAR AO MENU PRINCIPAL.");
@@ -65,12 +65,12 @@ public class Cronometrar {
                     // CASO "1" - INICIAR CONTAGEM:
                     case 1:
                         System.out.println("");
-                        this.tempo_cronometro();
+                        this.tempo_temporizador();
                     break;
 
                     // CASO "2" - ACERTAR O TEMPO:
                     case 2:
-                        this.acerto_cronometro();
+                        this.acerto_temporizador();
                     break;
                     
                     default:
@@ -93,7 +93,7 @@ public class Cronometrar {
     
     
     // FUNÇÃO QUE "ACERTA" O TEMPO A SER CONTADO:
-    public void acerto_cronometro() {
+    public void acerto_temporizador() {
         
         int tempo_aux1 = 0;
         int tempo_aux2 = 0;
@@ -142,10 +142,13 @@ public class Cronometrar {
     
     
     // FUNÇÃO QUE EXIBE E CALCULA O TEMPO:
-    public void tempo_cronometro() {
+    public void tempo_temporizador() {
         
         aux1 = 0;
         aux2 = 1;
+        
+        tempo6 = 5;
+        tempo5 = 1;
         
         Timer timer = null;
         final SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
@@ -159,19 +162,27 @@ public class Cronometrar {
 
                 try {      
                     
-                    System.out.println("CRONOMETRO - [ " + tempo2 + "h:" + tempo3 + tempo4 + "m:" + tempo5 + tempo6 + "s ]");
-                    tempo6++;
+                    System.out.println("TEMPORIZADOR - [ " + tempo2 + "h:" + tempo3 + tempo4 + "m:" + tempo5 + tempo6 + "s ]");
+                    tempo6--;
 
                     // "SEGUNDOS":
-                    if (tempo6 > 9) { tempo6 = 0; tempo5++; }
-                    if (tempo5 > 5) { tempo5 = 0; tempo4++; }
+                    if (tempo6 < 0) { tempo6 = 9; tempo5--; }
+                    if (tempo5 < 0) { tempo5 = 5; tempo4--; }
 
                     // "MINUTOS":
-                    if (tempo4 > 9) { tempo4 = 0; tempo3++; }
-                    if (tempo3 > 5) { tempo3 = 0; tempo2++; }
+                    if (tempo4 < 0) { tempo4 = 9; tempo3--; }
+                    if (tempo3 < 0) { tempo3 = 5; tempo2--; }
 
                     // "HORAS":
-                    if (tempo2 > 9) { tempo6 = 0; tempo5 = 0; tempo4 = 0; tempo3 = 0; tempo2 = 0; }
+                    if (tempo2 == 0 && tempo3 == 0 && tempo4 == 0 && tempo5 == 0 && tempo6 == 0) {  
+                    
+                        tempo2 = 1;
+                        tempo3 = 0;
+                        tempo4 = 0;
+                        tempo5 = 5;
+                        tempo6 = 9;
+                        
+                    }
                      
                 } catch (Exception e) {      
                     
