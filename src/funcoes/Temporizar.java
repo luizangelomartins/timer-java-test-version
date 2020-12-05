@@ -48,8 +48,7 @@ public class Temporizar {
                 System.out.println("TEMPO LIMITE: 10 ( DEZ ) HORAS");
                 System.out.println("");
                 System.out.println("0 - VOLTAR AO MENU PRINCIPAL.");
-                System.out.println("1 - INICIAR CONTAGEM.");
-                System.out.println("2 - ACERTAR O TEMPO.");
+                System.out.println("1 - ACERTAR O TEMPO E INICIAR CONTAGEM.");
                 System.out.println("");
                 System.out.printf("DIGITE SUA RESPOSTA: ");
                 Scanner escolha_user = new Scanner(System.in);
@@ -62,17 +61,12 @@ public class Temporizar {
                         repetir = 1;
                     break;
 
-                    // CASO "1" - INICIAR CONTAGEM:
+                    // CASO "1" - ACERTAR O TEMPO E INICIAR CONTAGEM:
                     case 1:
                         System.out.println("");
-                        this.tempo_temporizador();
-                    break;
-
-                    // CASO "2" - ACERTAR O TEMPO:
-                    case 2:
                         this.acerto_temporizador();
                     break;
-                    
+
                     default:
                         System.err.println("VALOR INVALIDO!");
                         System.err.println("POR FAVOR TENTE NOVAMENTE!");
@@ -98,46 +92,53 @@ public class Temporizar {
         int tempo_aux1 = 0;
         int tempo_aux2 = 0;
         int tempo_aux3 = 0;
+        int tempo_aux4 = 0;
         
-        // "SEGUNDOS":
-        while(tempo_aux1 != 1) {
+        while( tempo_aux4 != 1 ) {
             
-            System.out.println("");
-            System.out.printf("DIGITE OS SEGUNDOS PARTE 1 - ( 0 - 9 ): ");
-            Scanner segundos1 = new Scanner(System.in);
-            tempo6 = segundos1.nextInt();
-            System.out.printf("DIGITE OS SEGUNDOS PARTE 2 - ( 0 - 5 ): ");
-            Scanner segundos2 = new Scanner(System.in);
-            tempo5 = segundos2.nextInt();
-            if ( tempo6 <= 9 && tempo5 <= 5 ) { tempo_aux1 = 1; }
+            // "SEGUNDOS":
+            while(tempo_aux1 != 1) {
+
+                System.out.println("");
+                System.out.printf("DIGITE OS SEGUNDOS PARTE 1 - ( 0 - 9 ): ");
+                Scanner segundos1 = new Scanner(System.in);
+                tempo6 = segundos1.nextInt();
+                System.out.printf("DIGITE OS SEGUNDOS PARTE 2 - ( 0 - 5 ): ");
+                Scanner segundos2 = new Scanner(System.in);
+                tempo5 = segundos2.nextInt();
+                if ( tempo6 <= 9 && tempo5 <= 5 ) { tempo_aux1 = 1; }
+
+            }
+
+            // "MINUTOS":
+            while(tempo_aux2 != 1) {
+
+                System.out.println("");
+                System.out.printf("DIGITE OS MINUTOS PARTE 1 - ( 0 - 9 ): ");
+                Scanner minutos1 = new Scanner(System.in);
+                tempo4 = minutos1.nextInt();
+                System.out.printf("DIGITE OS MINUTOS PARTE 2 - ( 0 - 5 ): ");
+                Scanner minutos2 = new Scanner(System.in);
+                tempo3 = minutos2.nextInt();
+                if ( tempo4 <= 9 && tempo3 <= 5 ) { tempo_aux2 = 1; }
+
+            }
+
+            // "HORAS":
+            while(tempo_aux3 != 1) {
+
+                System.out.println("");
+                System.out.printf("DIGITE AS HORAS PARTE 1 - ( 0 - 9 ): ");
+                Scanner horas1 = new Scanner(System.in);
+                tempo2 = horas1.nextInt();
+                if ( tempo2 <= 9 ) { tempo_aux3 = 1; }
+
+            }
+
+            if ( tempo_aux1 == 1 && tempo_aux2 == 1 && tempo_aux3 == 1 ) { tempo_aux4 = 1; this.tempo_temporizador(); }
             
         }
-        
-        // "MINUTOS":
-        while(tempo_aux2 != 1) {
-            
-            System.out.println("");
-            System.out.printf("DIGITE OS MINUTOS PARTE 1 - ( 0 - 9 ): ");
-            Scanner minutos1 = new Scanner(System.in);
-            tempo4 = minutos1.nextInt();
-            System.out.printf("DIGITE OS MINUTOS PARTE 2 - ( 0 - 5 ): ");
-            Scanner minutos2 = new Scanner(System.in);
-            tempo3 = minutos2.nextInt();
-            if ( tempo4 <= 9 && tempo3 <= 5 ) { tempo_aux2 = 1; }
-            
-        }
-        
-        // "HORAS":
-        while(tempo_aux3 != 1) {
-            
-            System.out.println("");
-            System.out.printf("DIGITE AS HORAS PARTE 1 - ( 0 - 9 ): ");
-            Scanner horas1 = new Scanner(System.in);
-            tempo2 = horas1.nextInt();
-            if ( tempo2 <= 9 ) { tempo_aux3 = 1; }
-            
-        }
-        
+    
     }
     
     
@@ -146,9 +147,6 @@ public class Temporizar {
         
         aux1 = 0;
         aux2 = 1;
-        
-        tempo6 = 5;
-        tempo5 = 1;
         
         Timer timer = null;
         final SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
