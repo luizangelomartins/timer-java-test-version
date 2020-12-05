@@ -1,2 +1,5 @@
-@timer-java-test-version.
-@test.
+PROJETO DE "TIMER/TEMPORIZADOR" QUE CONSISTE EM:
+
+    - CRONOMETRAR,
+    - TEMPORIZAR.
+    
